@@ -1,0 +1,65 @@
+{
+  "name": "vue-scouting-form",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "prod": "node production-server.js"
+  },
+  "dependencies": {
+    "ag-grid-community": "^21.2.2",
+    "ag-grid-vue": "^21.2.2",
+    "axios": "^0.19.0",
+    "core-js": "^2.6.5",
+    "express": "^4.17.1",
+    "fast-csv": "^3.4.0",
+    "fibers": "^4.0.1",
+    "file-saver": "^2.0.2",
+    "formidable": "^1.2.1",
+    "open": "^6.4.0",
+    "vue": "^2.6.10",
+    "vue-axios": "^2.1.5",
+    "vue-property-decorator": "^8.2.2",
+    "vue-router": "^3.0.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.12.0",
+    "@vue/cli-plugin-eslint": "^3.12.0",
+    "@vue/cli-service": "^3.12.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.12.0",
+    "sass": "^1.23.0",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "rules": {
+      "indent": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
