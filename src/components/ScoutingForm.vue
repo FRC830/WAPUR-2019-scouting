@@ -20,34 +20,68 @@
   <div class="row">
     <div class="col">
     <form ref="form" @submit.prevent="formSubmit">
+      <!--scout info-->
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Scout Name">
+      </div>                                                                                
+      <div class="form-group">
+        <input type="number" name="age" placeholder="Scout Age" min="0" />
+      </div>
+      
 
+      <!--team info-->
       <div class="form-group">
-        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="teamName" placeholder="Team Name"/>
       </div>
       <div class="form-group">
-        <input type="number" name="age" placeholder="Age" />
+        <input type="number" name="points" placeholder="Points" min="0" />
       </div>
-      <!--
+      <div class = "form-group">
+        <input type = "number" name = "rankingPoints" placeholder ="Ranking Points" min ="0" step="1"/>
+      </div>
       <div class="form-group">
-        <input type="text" name="color" placeholder="Favorite Color">
+        <input type="number" name="timesScored" placeholder="# of Times Above" min="0"/>
       </div>
-      -->
+      <div class="form-group">
+        <input type="number" name="timsScored" placeholder="# of Times Below" min="0"/>
+      </div>
+
+      <!--strategy-->
+      <div>
+        <h4>Strategy</h4>
+      </div>
+      <div class="form-group">
+        <select name="offenive/defensive">
+          <option value="Offensive">Offensive</option>
+          <option value="Defensive">Defensive</option>
+        </select> 
+      </div>
+      <div class="form-group">
+        <select name="overUnder">
+          <option value="Over">Over</option>
+          <option value="Under">Under</option>
+        </select> 
+      </div>
+      <div class="form-group">
+        <textarea name="comments" id="textarea" rows="5" cols="50" placeholder="Other Strategy Notes"></textarea>                              
+      </div>                                                
+      
       <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
     </form>
     </div>
   </div>
-  </div>
+</div>
 </template>
 <script>
 import serializeArray from '../serialize.js'
-
+import runAchievements from '../acheivements.js'
 class ValidationError extends Error {
   constructor (message) {
     super(message)
     this.name = 'ValidationError'
   }
 }
-
+//document.getElementById("textarea").addEventListener('keydown', function(event){ document.getElementById("textarea").value = document.getElementById("textarea") + "#" });
 export default {
   name: 'ScoutingForm',
   data () {
@@ -97,6 +131,9 @@ export default {
       this.config.matchNum += 1
       this.setCurrentMatch()
       this.save('config.json', this.config)
+      console.log("Running acheivements...")
+      runAchievements()
+      console.log("Running acheivements..DONE")
     },
     save (file, data) {
       console.log(data)
