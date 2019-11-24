@@ -1,7 +1,7 @@
 <template>
   <div ref="scouting-form">
-    <div class="row">
-      <div class="col mb-1">
+    <button class="row">
+      <button class="col mb-1">
           <button v-if="config.station" type="button" :class="[this.config.station == 'red' ? 'btn-danger' : 'btn-primary']" class="btn btn-primary mr-1"> Station
             <span class="badge badge-light"> {{ config.station.capitalize() + " " + config.stationNum }} </span>
           </button>
@@ -14,63 +14,106 @@
           <button v-if="currentMatch" type="button" class="btn btn-primary"> Team
             <span class="badge badge-light"> {{ currentMatch[config.station][config.stationNum - 1].replace('frc','') }} </span>
           </button>
-      </div>
-    </div>
+      </button>
+    </button>
   <!-- This holds the actual scouting form -->
   <div class="row">
-    <div class="col">
+    <div class="col-md">
     <form ref="form" @submit.prevent="formSubmit">
       <!--scout info-->
       <div class="form-group">
-        <input type="text" name="name" placeholder="Scout Name">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Scout Name     </span>
+          </div>
+          <input type="text" class="form-control" placeholder="e.x. Chris" aria-label="Username" aria-describedby="basic-addon1" />
+        </div>
       </div>                                                                                
-      <div class="form-group">
-        <input type="number" name="age" placeholder="Scout Age" min="0" />
-      </div>
-      
-
+     
       <!--team info-->
       <div class="form-group">
-        <input type="text" name="teamName" placeholder="Team Name"/>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Team Name      </span>
+          </div>
+          <input type="text" class="form-control" placeholder="e.x. The Rats" aria-label="Username" aria-describedby="basic-addon1" />
+        </div>
       </div>
+ 
       <div class="form-group">
-        <input type="number" name="points" placeholder="Points" min="0" />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Points        </span>
+          </div>
+          <input type="text" class="form-control" placeholder="e.x. 12" aria-label="Username" aria-describedby="basic-addon1" />
+        </div>
       </div>
+ 
       <div class = "form-group">
-        <input type = "number" name = "rankingPoints" placeholder ="Ranking Points" min ="0" step="1"/>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Ranking Points </span>
+          </div>
+          <input type="text" class="form-control" placeholder="e.x. 12" aria-label="Username" aria-describedby="basic-addon1" />
+        </div>
       </div>
       <div class="form-group">
-        <input type="number" name="timesScored" placeholder="# of Times Above" min="0"/>
+                <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"># of Times Above</span>
+          </div>
+          <input type="text" class="form-control" placeholder="e.x. 3" aria-label="Username" aria-describedby="basic-addon1" />
+        </div>
       </div>
       <div class="form-group">
-        <input type="number" name="timsScored" placeholder="# of Times Below" min="0"/>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"># of Times Below</span>
+          </div>
+          <input type="text" class="form-control" placeholder="e.x. 4" aria-label="Username" aria-describedby="basic-addon1" />
+        </div>
       </div>
-
+      <div class="form-group">
+     
+      <div class="form-check">
+        <input class="form-check-input" id="atkzone" type="checkbox" name="inattack">
+        <label for="atkzone" class="form-check-label">Did they enter the atack zone after auton?</label>
+      </div>
+      </div>
+      <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" id="midzone" type="checkbox" name="inmid">
+        <label for="midzone" class="form-check-label" >Did they enter the midzone after auton?</label>
+      </div>
+      </div>
       <!--strategy-->
       <div>
-        <h4>Strategy</h4>
+        <h4 class="text-left">Strategy</h4>
       </div>
       <div class="form-group">
-        <select name="offenive/defensive">
+        <select name="offensive/defensive" class="custom-select">
           <option value="Offensive">Offensive</option>
           <option value="Defensive">Defensive</option>
-        </select> 
+        </select>
       </div>
       <div class="form-group">
-        <select name="overUnder">
+        <select name="overUnder" class="custom-select">
           <option value="Over">Over</option>
           <option value="Under">Under</option>
-        </select> 
+        </select>
       </div>
       <div class="form-group">
-        <textarea name="comments" id="textarea" rows="5" cols="50" placeholder="Other Strategy Notes"></textarea>                              
+        <textarea name="comments"  class="form-control"  id="textarea" rows="5" cols="50"  placeholder="Other Strategy Notes"></textarea>                              
       </div>                                                
-      
+     
       <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
     </form>
     </div>
+  <div class="col-md">
+  </div>
   </div>
 </div>
+ 
 </template>
 <script>
 import serializeArray from '../serialize.js'
@@ -81,7 +124,7 @@ class ValidationError extends Error {
     this.name = 'ValidationError'
   }
 }
-//document.getElementById("textarea").addEventListener('keydown', function(event){ document.getElementById("textarea").value = document.getElementById("textarea") + "#" });
+//document.getElementById("textarea").addEventListener('keydown', function(event){ document.getElementById("textarea").value = document.getElementById("textarea") + "#" });
 export default {
   name: 'ScoutingForm',
   data () {
@@ -114,7 +157,7 @@ export default {
         }
         this.$emit('message', 'error', err.response.data.error)
       })
-
+ 
       this.axios.get('/api/file/' + `schedules/${this.config.schedule}`.replace('/', '%2F')).then(res => {
         this.schedule = res.data
         this.setCurrentMatch()
@@ -132,7 +175,7 @@ export default {
       this.setCurrentMatch()
       this.save('config.json', this.config)
       console.log("Running acheivements...")
-      runAchievements()
+      runAchievements(data)
       console.log("Running acheivements..DONE")
     },
     save (file, data) {
