@@ -159,3 +159,9 @@ scoutname,teamname,points,ranking_points,above,below,offensive/defensive,overUnd
 "
 ,,,,,,Offensive,Over,night
 ,,,,,,Offensive,Over,reset
+,,,,,,Offensive,Over,"night
+"
+,,,,,,Offensive,Over,reset
+,,,,,,Offensive,Over,rick
+,Ratpack,,,,,Offensive,Over,
+,,,,4,2,Offensive,Over,

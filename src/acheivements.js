@@ -20,8 +20,22 @@ function runAcheivements (data) {
     }
 
     // Value Achievements
+
+
+    if (data.teamname.indexOf('Ratpack') !== -1) {
+        alert("Achievement Get! \n The pack of Rats! \n \n (Scout the Ratpack!)")
+    }
+
     if (data.points > 3){
         alert("Achievement Get! \n You got more than three points!")        
+    }
+
+    if (data.above > data.below) {
+        alert("Achievement Get!:[Attack from above!] \n Score more points launching the ball over the net")
+    }
+
+    if (data.below > data.above ) {
+        alert("Achievement Get!:[Attack from below!] \n Score more point launching the ball under the net ")
     }
 
     if (data.comments.indexOf('lick') !== -1) {
